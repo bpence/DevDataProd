@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Calculator</title>
+  <meta charset="utf-8">
+  <meta name="description" content="BMI Calculator">
+  <meta name="author" content="Brandt Pence">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>BMI Calculator</h1>
+    <h2>Developing Data Products, April-May 2016</h2>
+    <p>Brandt Pence<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Body Mass Index</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li class='..</li>'><li>Originally intended as a population-level measure</li>
+<li>Commonly-used now due to simplicity of calculation</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Body Mass Index cont.</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Calculated by ratio of weight (kg) to square of height (m)</li>
+<li>Categorizations are by range of BMI<br><br>
+<b>Table 1</b>: BMI values by category.
+<table>
+<tr><td><b>Category</b></td><td><b>BMI Range</b></td></tr>
+<tr><td>Underweight</td><td>&lt; 18.5</td></tr>
+<tr><td>Normal weight</td><td>18.5-25</td></tr>
+<tr><td>Overweight</td><td>25-30</td></tr>
+<tr><td>Obese</td><td>30-40</td></tr>
+<tr><td>Morbidly obese</td><td>&gt; 40</td></tr>
+</table></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The BMI Calculator</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Takes height (in inches or cm) and weight (in kg or pounds) as inputs</li>
+<li>Simple calculations</li>
+</ul>
+
+<pre><code class="r">bmi &lt;- eventReactive (input$go, {
+    if (input$wtunit == &quot;pounds&quot;) {  
+        weight &lt;- input$wt / 2.2     # converts pounds to kg
+    } else {
+        weight &lt;- input$wt           # leaves as is
+    }
+
+    if (input$htunit == &quot;inches&quot;) {
+        height &lt;- input$ht * 0.0254  # converts inches to m
+    } else {
+        height &lt;- input$ht * 0.01    # converts cm to m
+    }
+
+    weight / height ^ 2 })           # calculates BMI
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>The Output</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Calculator outputs calculated BMI and category
+<br><br></li>
+<li>Output also includes a figure showing U.S. distribution of BMI</li>
+<li>Split by sex</li>
+<li>Also includes means and standard deviations (+/- 1, 2, 3)</li>
+<li>Red line shows where the calculated BMI falls on the distribution</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>The Output cont.</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Example: male with BMI 28.0:<br>
+<img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Body Mass Index'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Body Mass Index cont.'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The BMI Calculator'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='The Output'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='The Output cont.'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
