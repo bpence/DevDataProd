@@ -11,16 +11,10 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Body Mass Index
-
-* ...
-* Originally intended as a population-level measure
-* Commonly-used now due to simplicity of calculation
-
---- .class #id 
-
 ## Body Mass Index cont.
 
+* Originally intended as a population-level measure
+* Commonly-used now due to simplicity of calculation
 * Calculated by ratio of weight (kg) to square of height (m)
 * Categorizations are by range of BMI<br><br>
 <b>Table 1</b>: BMI values by category.
